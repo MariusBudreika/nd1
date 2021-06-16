@@ -9,8 +9,19 @@
 <body>
     <h1>BMI</h1>
     <?php
+    $BMI = 0;
     if (isset($_POST['height']) and $_POST['height'] != "" && ($_POST['weight']) and $_POST['weight'] != "" ) {
-        print("<pre>Your BMI: " . $_POST['weight'] / ($_POST['height'] * $_POST['height']) . "!</pre>");
+        $BMI = $_POST['weight'] / ($_POST['height'] * $_POST['height']);
+        if($BMI < 18.5) {
+            print("<pre>Your BMI: " . $BMI . ". You need to gain weight." ."</pre>");
+        } elseif ($BMI > 18.5 && $BMI < 25) {
+            print("<pre>Your BMI is perfect: " . $BMI . "!</pre>");
+        } elseif ($BMI >= 25 && $BMI < 30) {
+            print("<pre>Your BMI: " . $BMI . ". You need to eat less 🍕!" . "</pre>");
+        } elseif ($BMI >= 30) {
+            print("<pre>Your BMI: " . $BMI . ". Start 🏃‍♂️!" . "</pre>");
+        }
+
     }
     ?>
     <form action="" method="POST">
